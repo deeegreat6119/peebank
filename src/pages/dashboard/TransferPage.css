@@ -1,0 +1,244 @@
+.transfer-container {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 2rem;
+  }
+  
+  .back-button {
+    background: none;
+    border: none;
+    color: #4a6bff;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 1rem;
+    cursor: pointer;
+    margin-bottom: 1.5rem;
+  }
+  
+  .transfer-card {
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    padding: 2rem;
+  }
+  
+  .transfer-header {
+    margin-bottom: 2rem;
+    text-align: center;
+  }
+  
+  .transfer-header h1 {
+    color: #2d3748;
+    margin-bottom: 1.5rem;
+  }
+  
+  .step-indicator {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .step {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: #e2e8f0;
+    color: #64748b;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+  }
+  
+  .step.active {
+    background: #4a6bff;
+    color: white;
+  }
+  
+  .form-step {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+  
+  .form-step h2 {
+    color: #2d3748;
+    margin-bottom: 0.5rem;
+  }
+  
+  .form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  
+  .form-group label {
+    font-weight: 500;
+    color: #4a5568;
+  }
+  
+  select, input {
+    padding: 0.75rem;
+    border: 1px solid #e2e8f0;
+    border-radius: 6px;
+    font-size: 1rem;
+    transition: border-color 0.2s;
+  }
+  
+  select:focus, input:focus {
+    outline: none;
+    border-color: #4a6bff;
+  }
+  
+  select.error, input.error {
+    border-color: #e53e3e;
+  }
+  
+  .error-message {
+    color: #e53e3e;
+    font-size: 0.875rem;
+  }
+  
+  .amount-input {
+    display: flex;
+    align-items: center;
+    border: 1px solid #e2e8f0;
+    border-radius: 6px;
+    overflow: hidden;
+  }
+  
+  .amount-input .currency-icon {
+    padding: 0 1rem;
+    background: #f7fafc;
+    color: #718096;
+    height: 100%;
+    display: flex;
+    align-items: center;
+  }
+  
+  .amount-input input {
+    border: none;
+    flex: 1;
+  }
+  
+  .balance-info {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.875rem;
+    color: #718096;
+  }
+  
+  .form-actions {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 2rem;
+  }
+  
+  .btn-back, .btn-next, .btn-submit {
+    padding: 0.75rem 1.5rem;
+    border-radius: 6px;
+    font-weight: 500;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: all 0.2s;
+  }
+  
+  .btn-back {
+    background: #f7fafc;
+    color: #4a5568;
+    border: 1px solid #e2e8f0;
+  }
+  
+  .btn-next, .btn-submit {
+    background: #4a6bff;
+    color: white;
+    border: none;
+  }
+  
+  .btn-next:disabled, .btn-submit:disabled {
+    background: #cbd5e0;
+    cursor: not-allowed;
+  }
+  
+  .review-details {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin: 1.5rem 0;
+  }
+  
+  .detail-row {
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .detail-label {
+    color: #718096;
+  }
+  
+  .detail-value {
+    color: #2d3748;
+    font-weight: 500;
+  }
+  
+  .detail-value.amount {
+    color: #2f855a;
+    font-weight: bold;
+  }
+  
+  .submission-error {
+    margin-top: 1rem;
+    padding: 0.75rem;
+    background: #fff5f5;
+    border-radius: 6px;
+  }
+  
+  .transfer-success {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+  
+  .success-card {
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    padding: 2rem;
+    text-align: center;
+    max-width: 500px;
+  }
+  
+  .success-icon {
+    font-size: 3rem;
+    color: #48bb78;
+    margin-bottom: 1rem;
+  }
+  
+  .success-card h2 {
+    color: #2d3748;
+    margin-bottom: 0.5rem;
+  }
+  
+  .success-card p {
+    color: #718096;
+    margin-bottom: 1.5rem;
+  }
+  
+  .transfer-details {
+    margin-top: 1.5rem;
+    text-align: left;
+    background: #f7fafc;
+    padding: 1rem;
+    border-radius: 8px;
+  }
+  
+  .transfer-details p {
+    margin: 0.5rem 0;
+    color: #4a5568;
+  }
