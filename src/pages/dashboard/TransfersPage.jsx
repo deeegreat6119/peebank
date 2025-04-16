@@ -48,7 +48,6 @@ const TransferPage = () => {
           throw new Error("Invalid response format");
         }
       } catch (err) {
-        console.error("Dashboard error:", err);
         if (err.message.includes("token") || err.message.includes("401")) {
           localStorage.removeItem("token");
           navigate("/login");
@@ -246,7 +245,6 @@ const TransferPage = () => {
                 if (account.accountNumber === transferData.fromAccount) {
                   return { ...account, balance: serverFromAccount.balance };
                 }
-                console.log(serverFromAccount.balance);
                 
                 if (account.accountNumber === transferData.toAccount) {
                   return { ...account, balance: serverToAccount.balance };

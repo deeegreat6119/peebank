@@ -57,10 +57,8 @@ const SignIn = () => {
           password: values.password,
         }),
       });
-      console.log(response);
 
       const data = await response.json();
-      console.log("Response:", data);
 
       if (!response.ok) {
         // Handle different error cases based on status code

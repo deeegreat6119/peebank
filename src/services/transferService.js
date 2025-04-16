@@ -21,7 +21,6 @@ export const createTransfer = async (transferData, token) => {
   try {
     // Improved account ID validation
     const validateAccountId = (id, fieldName) => {
-      console.log(`Validating ${fieldName} account:`, id);
       
       if (!id) throw new Error(`Missing ${fieldName} account`);
       
@@ -62,8 +61,6 @@ export const createTransfer = async (transferData, token) => {
       }
     };
 
-    // Validate accounts
-    console.log(validateAccountId(transferData.fromAccount, 'source'));
     
     validateAccountId(transferData.toAccount, 'destination');
 
@@ -72,13 +69,6 @@ export const createTransfer = async (transferData, token) => {
     if (isNaN(amount) ){
       throw new Error('Invalid transfer amount');
     }
-
-    console.log('Transfer Request:', {
-        fromAccount: typeof transferData.fromAccount === 'object' ? transferData.fromAccount.accountNumber : transferData.fromAccount,
-        toAccount: typeof transferData.toAccount === 'object' ? transferData.toAccount.accountNumber : transferData.toAccount,
-      amount: amount,
-      description: transferData.description || ''
-    });
     
     const response = await fetch(`${baseUrl}/api/v1/auth/transfer`, {
       method: 'POST',

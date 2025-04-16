@@ -45,7 +45,7 @@ const AccountsPage = () => {
       <div className="account-header">
         <h1>Accounts Overview</h1>
         <div className="account-actions">
-          <button className="btn-primary" onClick={() => console.log('Open account clicked')}>
+          <button className="btn-primary" onClick={() => navigate('/sign-up')}>
             <i className="fas fa-plus"></i> Open New Account
           </button>
           <button className="btn-secondary" onClick={() => navigate('/dashboard/transfers')}>

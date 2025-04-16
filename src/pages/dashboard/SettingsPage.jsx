@@ -77,7 +77,6 @@ const AccountSettingsPage = () => {
     };
     fetchSettingsData();
   }, []);
-// console.log(formData);
 
   const handleInputChange = (e) => {
     const { name, value, type, checked } = e.target;

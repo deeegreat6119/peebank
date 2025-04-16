@@ -79,7 +79,6 @@ const SupportPage = () => {
     
     // Simulate API call
     setTimeout(() => {
-      console.log('Form submitted:', formData);
       setIsSubmitting(false);
       setSubmitSuccess(true);
       setFormData({

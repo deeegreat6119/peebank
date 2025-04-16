@@ -43,7 +43,6 @@ const TransactionPage = () => {
         setTransactions(transactions);
         setFilteredTransactions(transactions);
       } catch (error) {
-        console.error('Transaction fetch error:', error);
         if (error.message.includes('token') || error.message.includes('401')) {
           localStorage.removeItem('token');
           navigate('/login');

@@ -51,14 +51,6 @@ const SignUp = () => {
   const handleSubmit = async (values) => {
     setIsLoading(true);
     try {
-      console.log('Submitting to:', `${baseUrl}/api/v1/auth/signup`);
-      console.log('Request payload:', {
-        firstName: values.firstName,
-        lastName: values.lastName,
-        email: values.email,
-        phone: values.phone,
-        password: values.password
-      });
       const response = await fetch(`${baseUrl}/api/v1/auth/signup`, {
         method: "POST",
         headers: {
@@ -75,14 +67,12 @@ const SignUp = () => {
       });
   
       const data = await response.json();
-      console.log('Response:', data);
 
       if (!response.ok) {
         throw new Error(data.message || 'Signup failed');
       }
       
       if (data.status === "success") {
-        console.log('Signup successful - Full response:', data);
         alert(`Signup successful! User ID: ${data.user?.id || 'unknown'}`);
         // Store verification token if available
         if (data.verificationToken) {
