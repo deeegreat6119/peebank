@@ -1,6 +1,10 @@
 {
     "rewrites": [
         {
+            "source": "/api/(.*)",
+            "destination": "https://nodesockect.onrender.com/api/$1"
+        },
+        {
             "source": "/(.*)",
             "destination": "/"
         }
