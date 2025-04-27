@@ -79,7 +79,7 @@ const AccountsPage = () => {
                   <h2>{formatCurrency(account.balance)}</h2>
                 </div>
                 <div className="account-details">
-                  <p><span>Account Number:</span> •••• •••• {account.id.slice(-4)}</p>
+                  <p><span>Account Number:</span> •••• •••• {account.number.slice(-4)}</p>
                   <p><span>Last Activity:</span> {new Date(account.lastActivity).toLocaleDateString()}</p>
                 </div>
               </div>

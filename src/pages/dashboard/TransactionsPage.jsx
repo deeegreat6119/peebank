@@ -21,7 +21,7 @@ const TransactionPage = () => {
     const fetchTransactions = async () => {
       try {
         setLoading(true);
-        const response = await fetch(`${baseUrl}/api/v1/auth/transactions`, {
+        const response = await fetch(`${baseUrl}/transactions`, {
           headers: {
             Authorization: `Bearer ${localStorage.getItem("token")}`,
             'Content-Type': 'application/json',

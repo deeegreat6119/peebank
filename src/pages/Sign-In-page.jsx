@@ -46,7 +46,7 @@ const SignIn = () => {
       //   return;
       // }
 
-      const response = await fetch(`${baseUrl}/api/v1/auth/signin`, {
+      const response = await fetch(`${baseUrl}/signin`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

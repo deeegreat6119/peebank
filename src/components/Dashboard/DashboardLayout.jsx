@@ -2,6 +2,7 @@ import React from "react";
 import SideDashboard from "./SideDashboard";
 import { Outlet } from "react-router-dom";
 import "../Dashboard/dashboard-layout.css";
+import { FaBars } from 'react-icons/fa';
 
 import { useState } from 'react';
 // import { Outlet } from 'react-router-dom';

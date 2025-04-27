@@ -51,7 +51,7 @@ const SignUp = () => {
   const handleSubmit = async (values) => {
     setIsLoading(true);
     try {
-      const response = await fetch(`${baseUrl}/api/v1/auth/signup`, {
+      const response = await fetch(`${baseUrl}/signup`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

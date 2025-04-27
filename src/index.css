@@ -330,12 +330,16 @@ body {
   color: #4299e1;
 }
 
-Responsive Adjustments
-/* @media (max-width: 768px) {
+/* LandingPage Responsive Adjustments */
+@media (max-width: 768px) {
+  .header-btn-signup {
+    display: none;
+  }
+
   .footer-grid {
     grid-template-columns: 1fr 1fr;
   }
-  
+
   .security-badges {
     flex-direction: column;
     align-items: center;
@@ -344,18 +348,60 @@ Responsive Adjustments
 }
 
 @media (max-width: 480px) {
-  .footer-grid {
-    grid-template-columns: 1fr;
+  .header-auth-buttons {
+    gap: 0rem;
   }
-} */
+  .header-btn-login {
+    padding: 0.5rem 1.5rem;
+  }
+  .bank-header {
+    padding: 0%;
+  }
+  .hero-container {
+    flex-direction: column-reverse;
+  }
+  .hero-content h1 {
+    font-size: 2rem;
+  }
+  .hero-btn-primary {
+    font-size: 10px;
+  }
+  .hero-btn-secondary {
+    font-size: 10px;
+  }
+  .hero-content p {
+    font-size: 1rem;
+  }
+  .footer-links {
+    font-size: 12px;
+  }
+  .peebank-footer {
+    font-size: 13px;
+  }
+  .footer-heading {
+    font-size: 14px;
+  }
+  .footer-contact {
+    font-size: 12px;
+  }
+  .social-links {
+    gap: 0.5rem;
+  }
+  .footer-grid {
+    gap: 1.5rem;
+  }
+  .legal-links a {
+    font-size: 10px;
+  }
+}
 
-
-/* SIGN-IN-PAGE  */
+/* SIGN-IN-PAGE styling  */
 
 .signin-container {
   display: flex;
   min-height: 100vh;
   font-family: "Inter", sans-serif;
+  flex-direction: column;
 }
 .main-signin-holder {
   display: flex;
@@ -672,10 +718,30 @@ Responsive Adjustments
   transform: translateX(3px);
 }
 
-/* Responsive Adjustments */
+/*Sign-In Responsive Adjustments */
+@media (max-width: 1040px) {
+  .signin-card {
+    width: 60%;
+  }
+  .promo-title {
+    font-size: 3rem;
+    width: 42dvw;
+  }
+}
+
 @media (max-width: 768px) {
+  .signin-card {
+    max-width: 50%;
+  }
   .promo-title {
     font-size: 1rem;
+    width: 30dvw;
+  }
+  .promo-cta {
+    font-size: 1rem;
+  }
+  .signin-form {
+    gap: 0rem;
   }
 
   .promo-benefits li {
@@ -684,18 +750,32 @@ Responsive Adjustments
 }
 
 /* Responsive */
-@media (max-width: 768px) {
-  .signin-container {
+@media (max-width: 480px) {
+  .signin-card {
+    max-width: fit-content;
+    margin-left: 50px;
+  }
+  .signin-header h1 {
+    font-size: 1.6rem;
+    color: #1a365d;
+    margin-bottom: 0rem;
+  }
+  .signin-header {
+    text-align: center;
+    margin-bottom: 1.5rem;
+    font-size: 14px;
+  }
+  .main-signin-holder {
+    display: flex;
     flex-direction: column;
   }
-
-  .signin-card {
-    max-width: 100%;
-    padding: 2rem 1.5rem;
+  .promo-title {
+    font-size: 2rem;
+    width: 80dvw;
   }
-
-  .signin-banner {
-    display: none;
+  .promo-banner {
+    width: 88dvw;
+    height: 70dvh;
   }
 }
 
@@ -961,6 +1041,11 @@ Responsive Adjustments
 }
 
 /* Responsive */
+@media (max-width: 1040px){
+  .auth-card{
+    max-width: 450px;
+  }
+}
 @media (max-width: 768px) {
   .auth-container {
     flex-direction: column;
@@ -997,6 +1082,13 @@ Responsive Adjustments
 .bank-sidebar.collapsed {
   width: 90px;
 }
+/* .peebank-sidebar > button{
+  display: none;
+} */
+.toggle-menu{
+  width: 30px;
+  height: 30px;
+}
 
 .sidebar-header {
   padding: 20px;
@@ -1005,7 +1097,7 @@ Responsive Adjustments
   align-items: center;
   border-bottom: 1px solid #4a5568;
 }
-.sidedashboard-links{
+.sidedashboard-links {
   width: auto !important;
   /* width: 250px; */
   background: #2c3e50;
@@ -1147,7 +1239,7 @@ nav li.active a {
 .bank-admin-container {
   display: flex;
   min-height: 100vh;
-  font-family: 'Segoe UI', system-ui, sans-serif;
+  font-family: "Segoe UI", system-ui, sans-serif;
   background-color: #f5f7fa;
 }
 
@@ -1250,7 +1342,7 @@ nav li.active a {
 
 /* Main Content Styles */
 .main-content {
-  flex: 1;
+  /* flex: 1; */
   overflow-y: auto;
 }
 
@@ -1260,7 +1352,7 @@ nav li.active a {
   align-items: center;
   padding: 1.5rem;
   background: white;
-  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
 }
 
 .header-actions {
@@ -1330,7 +1422,7 @@ nav li.active a {
   background: white;
   border-radius: 8px;
   padding: 1.5rem;
-  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
   display: flex;
   align-items: center;
   gap: 1rem;
@@ -1406,7 +1498,7 @@ nav li.active a {
   border-radius: 8px;
   margin: 0 1.5rem 1.5rem;
   padding: 1.5rem;
-  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
 }
 
 .section-header {
@@ -1495,7 +1587,7 @@ td {
   background: white;
   border-radius: 8px;
   padding: 1.5rem;
-  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
 }
 
 .chart-placeholder {
@@ -1545,6 +1637,9 @@ td {
   .charts-section {
     grid-template-columns: 1fr;
   }
+  .recent-transactions{
+    margin: 0%;
+  }
 }
 
 @media (max-width: 480px) {
@@ -1556,26 +1651,46 @@ td {
     flex-direction: column;
     align-items: flex-start;
     gap: 1rem;
+    width: 80dvw;
   }
 
   .header-actions {
-    width: 100%;
-    justify-content: space-between;
+    /* width: 100%;
+    justify-content: space-between; */
+    gap: 1rem;
   }
+  /* .account-summary{
+    width: 80dvw;
+  }
+  .dashboard-tabs{
+    width: 80dvw;
+  }
+  .action-buttons{
+    width: 80dvw;
+  }
+  .account-card{
+    width: 80dvw;
+  }
+  .recent-transactions{
+    width: 80dvw;
+  }
+  .upcoming-bills{
+    width: 80dvw;
+  } */
 }
 
 .dashboard-container {
-  display: 'flex';
-  height: '100vh';
+  display: "flex";
+  height: "100vh";
 }
-.dashboard-sidebar{
-  width: '250px';
+.dashboard-sidebar {
+  width: "250px";
   background-color: #f0f0f0;
 }
 .dashboard-content {
   flex: 2;
-  padding: '20px';
-  overflow: 'auto';
+  padding: "20px";
+  overflow: "auto";
 }
 
 /* ACCOUNT PAGE STYLING */
@@ -1603,7 +1718,8 @@ td {
   gap: 1rem;
 }
 
-.btn-primary, .btn-secondary {
+.btn-primary,
+.btn-secondary {
   padding: 0.75rem 1.5rem;
   border-radius: 8px;
   font-weight: 600;
@@ -1790,7 +1906,7 @@ td {
   flex-grow: 1;
 }
 
-.transaction-date{
+.transaction-date {
   font-size: 0.9rem;
 }
 .transaction-details h4 {
@@ -1843,13 +1959,27 @@ td {
 .fa-spinner {
   font-size: 1.5rem;
 }
+@media (max-width: 480px) {
+  .account-header h1{
+    font-size: 1.5rem;
+  }
+  .btn-primary, .btn-secondary {
+    padding: 0.4rem 0.7rem;
+  }
+  .account-header {
+    gap: 4rem;
+  }
+  /* .account-card{
+    width: fit-content;
+  } */
+}
 /* ACCOUNT SETTINGS */
 /* Main Container */
 .account-settings-container {
   max-width: 1200px;
   margin: 0 auto;
   padding: 2rem;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
 
 .settings-header {
@@ -2043,7 +2173,7 @@ td {
   right: 0;
   bottom: 0;
   background-color: #ccc;
-  transition: .4s;
+  transition: 0.4s;
   border-radius: 34px;
 }
 
@@ -2055,7 +2185,7 @@ td {
   left: 4px;
   bottom: 4px;
   background-color: white;
-  transition: .4s;
+  transition: 0.4s;
   border-radius: 50%;
 }
 
@@ -2208,6 +2338,33 @@ input:checked + .slider:before {
 .btn-save:hover {
   background: #2980b9;
 }
+@media (max-width: 480px) {
+  .account-settings-container{
+    padding: 0rem;
+    margin-top: 3rem;
+  }
+  .settings-nav{
+    width: 60px;
+  }
+  .nav-item{
+    padding: 0.75rem 0rem;
+  }
+  .settings-content {
+    flex: 2;
+    padding: 0rem;
+  }
+  .form-group{
+    width: 50dvw;
+  }
+  .form-group input, .form-group select, .form-group textarea{
+    font-size: 0.8rem !important;
+  }
+}
+@media (max-width: 394px) {
+  .settings-layout{
+    gap: 1rem;
+  }
+}
 
 /* TRANSACTIONS STYLE */
 /* Main Page Styles */
@@ -2215,7 +2372,7 @@ input:checked + .slider:before {
   max-width: 1200px;
   margin: 0 auto;
   padding: 2rem;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
 
 .transaction-header {
@@ -2375,13 +2532,28 @@ input:checked + .slider:before {
   color: #495057;
   border-bottom: 1px solid #e9ecef;
 }
+/* TRANSACTION RESPONSIVENESS */
+@media (max-width: 480px) {
+  .transaction-header{
+    flex-direction: column;
+  }
+  .transaction-page{
+    padding: 0rem;
+    margin-top: 2rem;
+  }
+}
+@media (max-width: 394px) {
+  .transaction-page{
+    padding: 0rem;
+  }
+}
 /* TRANSFER */
 /* Main Page Styles */
 .transfer-page {
   max-width: 1200px;
   margin: 0 auto;
   padding: 2rem;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
 
 .transfer-header {
@@ -2453,7 +2625,7 @@ input:checked + .slider:before {
 }
 
 .form-stepper::before {
-  content: '';
+  content: "";
   position: absolute;
   top: 20px;
   left: 0;
@@ -2802,13 +2974,26 @@ input:checked + .slider:before {
   margin-bottom: 1rem;
   color: #bdc3c7;
 }
+@media (max-width: 768px) {
+  .recent-transfers-container{
+    flex: 1.3;
+  }
+}
+@media (max-width: 480px) {
+  .recent-transfers-container{
+    display: none;
+  }
+  .transfer-page{
+    padding: 2rem 0rem;
+  }
+}
 /* SUPPORT PAGE STYLING */
 /* Main Page Styles */
 .support-page {
   max-width: 1200px;
   margin: 0 auto;
   padding: 2rem;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
 
 .support-header {
@@ -3488,6 +3673,19 @@ input:checked + .slider:before {
 .tickets-empty button:hover {
   background: #2980b9;
 }
+@media (max-width: 480px) {
+  .tab-button{
+    padding: 1rem 1rem !important;
+  }
+  .faq-search input{
+    width: fit-content;
+  }
+}
+@media (max-width: 375px) {
+  .faq-search input{
+    width: 80dvw;
+  }
+}
 
 /* DASHBOARD  */
 /* Main Dashboard Styles */
@@ -3495,7 +3693,7 @@ input:checked + .slider:before {
   max-width: 1200px;
   margin: 0 auto;
   padding: 2rem;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
 
 /* Dashboard Header */
@@ -4103,4 +4301,10 @@ input:checked + .slider:before {
 
 .btn-pay-now:hover {
   background: #2980b9;
+}
+
+@media (max-width: 480px) {
+  .dashboard{
+    padding: 2rem 0rem 2rem;
+  }
 }

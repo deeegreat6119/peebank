@@ -31,14 +31,14 @@ const Dashboard = () => {
       try {
         setLoading(true);
         const [dashboardResponse, transactionsResponse] = await Promise.all([
-          fetch(`${baseUrl}/api/v1/auth/dashboard`, {
+          fetch(`${baseUrl}/dashboard`, {
             headers: {
               Authorization: `Bearer ${localStorage.getItem("token")}`,
               'Accept': 'application/json',
               'Content-Type': 'application/json'
             },
           }),
-          fetch(`${baseUrl}/api/v1/auth/transactions`, {
+          fetch(`${baseUrl}/transactions`, {
             headers: {
               Authorization: `Bearer ${localStorage.getItem("token")}`,
               'Content-Type': 'application/json',
@@ -108,7 +108,8 @@ const Dashboard = () => {
   }, [updateAccountBalance]);
   
   const { user, accounts, stats } = dashboardData;
-  // Removed the unused transactions variable
+  const accountNumber = accounts[0]?.number;
+  
 
   const formatCurrency = (amount) => {
     return new Intl.NumberFormat("en-US", {
@@ -120,6 +121,11 @@ const Dashboard = () => {
   const formatDate = (dateString) => {
     const options = { month: "short", day: "numeric" };
     return new Date(dateString).toLocaleDateString(undefined, options);
+  };
+
+  const formatAccountNumber = (accountNumber) => {
+    if (!accountNumber) return "****";
+    return `****${accountNumber.slice(-4)}`;
   };
 
   const getAccountIcon = (type) => {
@@ -159,7 +165,7 @@ const Dashboard = () => {
   const handleRefresh = async () => {
     try {
       await fetchAccounts();
-      const response = await fetch(`${baseUrl}/api/v1/auth/dashboard`, {
+      const response = await fetch(`${baseUrl}/dashboard`, {
         headers: {
           Authorization: `Bearer ${localStorage.getItem("token")}`,
           'Accept': 'application/json',
@@ -218,7 +224,7 @@ const Dashboard = () => {
           >
             {accounts.map((account) => (
               <option key={account.id} value={account.id}>
-                {account.name} ({account.number})
+                {account.name} ({formatAccountNumber(accountNumber)})
               </option>
             ))}
           </select>

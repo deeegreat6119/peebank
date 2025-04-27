@@ -8,7 +8,7 @@ const AuthGuard = ({ children }) => {
     const navigate = useNavigate();
     useEffect(() => {
         setIsLoading(true);
-        fetch(`${baseUrl}/api/v1/auth/dashboard`, {
+        fetch(`${baseUrl}/dashboard`, {
             headers: {
                 Authorization: `Bearer ${localStorage.getItem("token")}`,
                 'Accept': 'application/json',

@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { fetchTransferData } from "../../services/transferService";
 import { useTransfer } from "../../hooks/useTransfer";
 import { useAccounts } from "../../hooks/UseAccount";
+import { showToast } from "../../utils/toast";
 import "./TransferPage.css";
 
 const TransferPage = () => {
@@ -121,13 +122,13 @@ const TransferPage = () => {
           (acc) => acc.
             accountNumber === transferData.fromAccount
         );
-        if (
-          selectedAccount &&
-          parseFloat(transferData.amount) > selectedAccount.balance
-        ) {
-          alert("Insufficient funds")
-          newErrors.amount = "Insufficient funds";
-        }
+          if (
+            selectedAccount &&
+            parseFloat(transferData.amount) > selectedAccount.balance
+          ) {
+            showToast("Insufficient funds", "error");
+            newErrors.amount = "Insufficient funds";
+          }
       }
     }
 
@@ -173,7 +174,7 @@ const TransferPage = () => {
           recurring: transferData.recurring,
           frequency: transferData.frequency,
         }),
-        userId: localStorage.getItem("userId") // Add user ID for ownership verification
+        userId: localStorage.getItem("userId") 
       };
 
       const result = await executeTransfer(
@@ -181,22 +182,6 @@ const TransferPage = () => {
         localStorage.getItem("token")
       );
       if (result.status === "success") {
-        // Optimistic UI update
-        // const updatedAccounts = accounts.map(account => {
-        //   if (account.accountNumber === transferData.fromAccount) {
-        //     return {
-        //       ...account,
-        //       balance: parseFloat(account.balance) - parseFloat(transferData.amount)
-        //     };
-        //   }
-        //   if (account.accountNumber === transferData.toAccount) {
-        //     return {
-        //       ...account,
-        //       balance: parseFloat(account.balance) + parseFloat(transferData.amount)
-        //     };
-        //   }
-        //   return account;
-        // });
         const fromAccount = accounts.find(acc => acc.accountNumber === transferData.fromAccount);
           const toAccount = transferData.toAccount !== "external" 
             ? accounts.find(acc => acc.accountNumber === transferData.toAccount)
@@ -257,10 +242,10 @@ const TransferPage = () => {
           console.error("Balance verification failed:", err);
         }
 
-        alert(`Transfer successful! Reference: ${result.data.reference}`);
+        showToast(`Transfer successful! Reference: ${result.data.reference}`, "success");
         navigate("/transactions");
       } else if (result.status === "error") {
-        alert(`Transfer failed: ${result.data.message}`);
+        showToast(`Transfer failed: ${result.data.message}`, "error");
       }
     } catch (error) {
       console.error("Transfer error:", error);

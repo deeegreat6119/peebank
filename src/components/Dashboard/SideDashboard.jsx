@@ -12,16 +12,23 @@ import {
 } from "react-icons/fi";
 import { Link, useLocation } from "react-router-dom";
 import { useNavigate } from "react-router";
+import './SideDashboard.css'
 
 const SideDashboard = () => {
-  const [collapsed, setCollapsed] = useState(false);
+  // const [collapsed, setCollapsed] = useState(false);
   const [activeLink, setActiveLink] = useState("dashboard");
+  // const [isOpen, setIsOpen] = useState(false);
+  const [isMobileOpen, setIsMobileOpen] = useState(false); // Controls mobile sidebar
+  const [isCollapsed, setIsCollapsed] = useState(false); // Controls desktop collapse
+  // const [activeLink, setActiveLink] = useState("");
   const navigate = useNavigate();
   const location = useLocation();
 
   useEffect(() => {
     // Set active link based on current URL path
-    const currentItem = navItems.find(item => location.pathname.includes(item.path));
+    const currentItem = navItems.find((item) =>
+      location.pathname.includes(item.path)
+    );
     if (currentItem) {
       setActiveLink(currentItem.id);
     }
@@ -29,7 +36,7 @@ const SideDashboard = () => {
 
   const handleLogout = () => {
     localStorage.removeItem("token");
-    navigate("sign-in")
+    navigate("sign-in");
   };
 
   const navItems = [
@@ -68,49 +75,53 @@ const SideDashboard = () => {
   ];
 
   return (
-    <div className={`bank-sidebar ${collapsed ? "collapsed" : ""}`}>
-      {/* Sidebar Header */}
-      <div className="sidebar-header">
-        {!collapsed && <h2>Peebank Admin</h2>}
-        <button
-          onClick={() => setCollapsed(!collapsed)}
-          className="collapse-btn"
-        >
-          {collapsed ? "→" : "←"}
-        </button>
-      </div>
+    <div className="sidebar-container">
+      {/* Mobile Toggle Button (Hidden on Desktop) */}
+      <button 
+        className="mobile-toggle-btn"
+        onClick={() => setIsMobileOpen(!isMobileOpen)}
+      >
+        <FiMenu size={24} />
+      </button>
 
-      {/* Navigation Links */}
-      <nav>
-        <ul>
-          {navItems.map((item) => (
-            <li
-              key={item.id}
-              className={activeLink === item.id ? "active" : ""}
-              onClick={() => setActiveLink(item.id)}
-            >
-              <Link to={item.path}>
-                <span className="icon">{item.icon}</span>
-                {!collapsed && <span className="label">{item.label}</span>}
-              </Link>
-            </li>
-          ))}
-        </ul>
-      </nav>
+      {/* Sidebar (Conditional on Mobile, Always Visible on Desktop) */}
+      <div className={`sidebar ${isMobileOpen ? "open" : ""} ${isCollapsed ? "collapsed" : ""}`}>
+        {/* Sidebar Header */}
+        <div className="sidebar-header">
+          {!isCollapsed && <h2>Peebank Admin</h2>}
+          <button
+            className="desktop-collapse-btn" // Hidden on mobile
+            onClick={() => setIsCollapsed(!isCollapsed)}
+          >
+            {isCollapsed ? "→" : "←"}
+          </button>
+        </div>
 
-      {/* Footer with Logout */}
-      <div className="sidebar-footer">
-        <button onClick={handleLogout} className="logout-btn">
-          <FiLogOut />
-          {!collapsed && <span>Logout</span>}
-        </button>
-      </div>
+        {/* Navigation Links */}
+        <nav>
+          <ul>
+            {navItems.map((item) => (
+              <li
+                key={item.id}
+                className={activeLink === item.id ? "active" : ""}
+                onClick={() => setActiveLink(item.id)}
+              >
+                <Link to={item.path}>
+                  <span className="icon">{item.icon}</span>
+                  {!isCollapsed && <span className="label">{item.label}</span>}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </nav>
 
-      {/* Sidebar Toggle */}
-      <div className="sidebar-toggle">
-        <button onClick={() => setCollapsed(!collapsed)}>
-          <FiMenu />
-        </button>
+        {/* Footer with Logout */}
+        <div className="sidebar-footer">
+          <button onClick={handleLogout} className="logout-btn">
+            <FiLogOut />
+            {!isCollapsed && <span>Logout</span>}
+          </button>
+        </div>
       </div>
     </div>
   );

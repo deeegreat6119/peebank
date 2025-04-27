@@ -1,0 +1,129 @@
+/* Sidebar Container */
+.sidebar-container {
+  position: relative;
+}
+
+.mobile-toggle-btn {
+  display: block;
+  position: fixed;
+  top: 16px;
+  left: 16px;
+  z-index: 1000;
+  /* background: #2d3748; */
+  color: black;
+  border: none;
+  padding: 8px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+/* Sidebar Base Styles */
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: -100%;
+  width: 250px;
+  height: 100vh;
+  background: #2d3748;
+  color: white;
+  transition: left 0.3s ease;
+  z-index: 900;
+  overflow-y: auto;
+}
+/* MOBILE RESPONSIVE */
+@media (min-width: 1024px) {
+  .mobile-toggle-btn {
+    display: none;
+  }
+
+  .sidebar {
+    left: 0 !important;
+    position: relative;
+    height: 100vh;
+    transition: width 0.3s ease;
+  }
+
+  .sidebar.collapsed {
+    width: 80px;
+  }
+}
+
+/* Mobile Open State */
+.sidebar.open {
+  left: 0;
+}
+
+/* Sidebar Header */
+.sidebar-header {
+  padding: 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #4a5568;
+}
+
+/* Desktop Collapse Button (Hidden on Mobile) */
+.desktop-collapse-btn {
+  display: none;
+}
+
+@media (min-width: 1024px) {
+  .desktop-collapse-btn {
+    display: block;
+    background: transparent;
+    color: white;
+    border: none;
+    cursor: pointer;
+  }
+}
+
+/* Navigation Links */
+.sidebar nav ul {
+  list-style: none;
+  padding: 0;
+}
+
+.sidebar nav ul li {
+  padding: 12px 16px;
+  cursor: pointer;
+}
+
+.sidebar nav ul li:hover {
+  background: #4a5568;
+}
+
+.sidebar nav ul li.active {
+  background: #4299e1;
+}
+
+.sidebar nav ul li a {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: white;
+  text-decoration: none;
+}
+
+/* Sidebar Footer */
+.sidebar-footer {
+  padding: 16px;
+  border-top: 1px solid #4a5568;
+  margin-top: auto;
+}
+
+.logout-btn {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: transparent;
+  color: white;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  padding: 8px;
+  border-radius: 4px;
+}
+
+.logout-btn:hover {
+  background: #4a5568;
+}

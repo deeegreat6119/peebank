@@ -10,7 +10,7 @@ export const useAccounts = () => {
   const fetchAccounts = async () => {
     try {
       setLoading(true);
-      const response = await fetch(`${baseUrl}/api/v1/auth/dashboard`, {
+      const response = await fetch(`${baseUrl}/dashboard`, {
         headers: {
           Authorization: `Bearer ${localStorage.getItem("token")}`,
           'Content-Type': 'application/json'

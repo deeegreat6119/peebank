@@ -1,7 +1,7 @@
 import baseUrl from '../Constants';
 
 export const fetchTransferData = async (token) => {
-  const response = await fetch(`${baseUrl}/api/v1/auth/dashboard`, {
+  const response = await fetch(`${baseUrl}/dashboard`, {
     method: "GET",
     headers: {
       Authorization: `Bearer ${token}`,
@@ -70,7 +70,7 @@ export const createTransfer = async (transferData, token) => {
       throw new Error('Invalid transfer amount');
     }
     
-    const response = await fetch(`${baseUrl}/api/v1/auth/transfer`, {
+    const response = await fetch(`${baseUrl}/transfer`, {
       method: 'POST',
       headers: {
         'Authorization': `Bearer ${token}`,

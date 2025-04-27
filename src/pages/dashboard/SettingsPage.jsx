@@ -34,7 +34,7 @@ const AccountSettingsPage = () => {
       try {
         setLoading(true);
         // Fetch combined settings data from backend root endpoint
-        const response = await fetch(`${baseUrl}/api/v1/settings`, {
+        const response = await fetch(`${baseUrl}/api/settings`, {
           headers: {
             Authorization: `Bearer ${localStorage.getItem("token")}`,
             Accept: "application/json",
@@ -117,7 +117,7 @@ const AccountSettingsPage = () => {
     setLoading(true);
     try {
       // Update profile
-      const profileResponse = await fetch(`${baseUrl}/api/v1/settings/profile`, {
+      const profileResponse = await fetch(`${baseUrl}/api/settings/profile`, {
         method: "PATCH",
         headers: {
           Authorization: `Bearer ${localStorage.getItem("token")}`,
@@ -138,7 +138,7 @@ const AccountSettingsPage = () => {
       }
 
       // Update notifications
-      const notificationsResponse = await fetch(`${baseUrl}/api/v1/settings/notifications`, {
+      const notificationsResponse = await fetch(`${baseUrl}/api/settings/notifications`, {
         method: "PATCH",
         headers: {
           Authorization: `Bearer ${localStorage.getItem("token")}`,
@@ -150,7 +150,7 @@ const AccountSettingsPage = () => {
       if (!notificationsResponse.ok) throw new Error("Notifications update failed");
 
       // Update security
-      const securityResponse = await fetch(`${baseUrl}/api/v1/settings/security`, {
+      const securityResponse = await fetch(`${baseUrl}/api/settings/security`, {
         method: "PATCH",
         headers: {
           Authorization: `Bearer ${localStorage.getItem("token")}`,
@@ -162,7 +162,7 @@ const AccountSettingsPage = () => {
       if (!securityResponse.ok) throw new Error("Security update failed");
 
       // Update privacy
-      const privacyResponse = await fetch(`${baseUrl}/api/v1/settings/privacy`, {
+      const privacyResponse = await fetch(`${baseUrl}/api/settings/privacy`, {
         method: "PATCH",
         headers: {
           Authorization: `Bearer ${localStorage.getItem("token")}`,

@@ -81,9 +81,9 @@ const Footer = () => {
         <div className="container">
           <p>© {new Date().getFullYear()} PeeBank. All rights reserved.</p>
           <div className="legal-links">
-            <Link to="/privacy">Privacy Policy</Link>
-            <Link to="/terms">Terms of Service</Link>
-            <Link to="/disclosures">Disclosures</Link>
+            <Link to="#">Privacy Policy</Link>
+            <Link to="#">Terms of Service</Link>
+            <Link to="#">Disclosures</Link>
           </div>
         </div>
       </div>
