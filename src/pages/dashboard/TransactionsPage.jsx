@@ -35,11 +35,16 @@ const TransactionPage = () => {
         
         const { data } = await response.json();
         // Transform data to include type (credit/debit) for filtering
-        const transactions = data.map(txn => ({
-          ...txn,
-          type: txn.amount >= 0 ? 'credit' : 'debit',
-          category: 'Transfer' // Default category since API doesn't provide it
-        }));
+        const transactions = data.map(txn => {
+          // Determine if transaction is outgoing transfer
+          const isOutgoingTransfer = txn.category === 'Transfer' && txn.direction === 'outgoing';
+          return {
+            ...txn,
+            type: isOutgoingTransfer ? 'debit' : (txn.amount >= 0 ? 'credit' : 'debit'),
+            amount: isOutgoingTransfer ? -Math.abs(txn.amount) : Math.abs(txn.amount),
+            category: 'Transfer'
+          };
+        });
         setTransactions(transactions);
         setFilteredTransactions(transactions);
       } catch (error) {

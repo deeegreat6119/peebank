@@ -63,7 +63,7 @@ const SignUp = () => {
           email: values.email,
           phone: values.phone,
           password: values.password
-        }), // ← confirmPassword removed
+        }),
       });
   
       const data = await response.json();
@@ -74,7 +74,6 @@ const SignUp = () => {
       
       if (data.status === "success") {
         alert(`Signup successful! User ID: ${data.user?.id || 'unknown'}`);
-        // Store verification token if available
         if (data.verificationToken) {
           localStorage.setItem('verifyToken', data.verificationToken);
         }
