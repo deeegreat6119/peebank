@@ -10,7 +10,7 @@ import {
   FiEye,
   FiEyeOff,
 } from "react-icons/fi";
-import bankLogo from "../assets/peebank-logo.svg";
+import bankLogo from "../assets/Peebank-logo.svg";
 import baseUrl from "../Constants";
 
 const SignUp = () => {
