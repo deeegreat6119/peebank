@@ -3,8 +3,8 @@ import { useNavigate } from "react-router-dom";
 import { FiBell, FiRefreshCw } from "react-icons/fi";
 import baseUrl from "../../Constants";
 import {useAccounts} from "../../hooks/UseAccount"
-// import PropTypes from 'prop-types';
-// import './Dashboard.css';
+// import { io } from 'socket.io-client'
+// const socket = io('http://localhost:3000/')
 
 const Dashboard = () => {
   const { 
@@ -12,7 +12,7 @@ const Dashboard = () => {
     // loading, 
     // error, 
     fetchAccounts, 
-    updateAccountBalance 
+    // updateAccountBalance 
   } = useAccounts();
   const [activeTab, setActiveTab] = useState("overview");
   const [dashboardData, setDashboardData] = useState({
@@ -24,6 +24,7 @@ const Dashboard = () => {
   const [_loading, setLoading] = useState(true);
   const [_error, setError] = useState(null);
   const [selectedAccount, setSelectedAccount] = useState(null);
+  const [updatedbalance, setupdatedbalance] = useState([])
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -54,17 +55,22 @@ const Dashboard = () => {
         const dashboardJson = await dashboardResponse.json();
         let transactionsData = [];
         
-        if (transactionsResponse.ok) {
-          const { data } = await transactionsResponse.json();
-          transactionsData = data.map(txn => ({
-            id: txn.id,
-            description: txn.description || 'Transaction',
-            date: txn.date || new Date().toISOString(),
-            account: txn.account || 'Primary Account',
-            amount: Math.abs(txn.amount),
-            type: txn.amount >= 0 ? 'credit' : 'debit'
-          }));
-        }
+          if (transactionsResponse.ok) {
+            const { data } = await transactionsResponse.json();
+            transactionsData = data.map(txn => {
+              const isDeposit = txn.category && txn.category.toLowerCase() === 'deposit';
+              return {
+                ...txn,
+                id: txn.id,
+                description: txn.description || 'Transaction',
+                date: txn.date || new Date().toISOString(),
+                account: txn.account || 'Primary Account',
+                amount: Math.abs(txn.amount),
+                type: isDeposit ? 'credit' : (txn.amount >= 0 ? 'credit' : 'debit'),
+                category: isDeposit ? 'Deposit' : (txn.category || 'Transaction')
+              };
+            });
+          }
 
         // Handle both possible response structures
         const dashboardData = dashboardJson.data || {
@@ -96,19 +102,21 @@ const Dashboard = () => {
     fetchDashboardData();
   }, [navigate]);
 
-  useEffect(() => {
-    const handleBalanceUpdate = (event) => {
-      if (event.detail?.accountId && event.detail?.newBalance) {
-        updateAccountBalance(event.detail.accountId, event.detail.newBalance);
-      }
-    };
+  // useEffect(() => {
+  //   socket.on('send_Message', ({ balance }) => {
+  //     setupdatedbalance((prevBalances) => [...prevBalances, balance]);
+  //   });
 
-    window.addEventListener('balanceUpdate', handleBalanceUpdate);
-    return () => window.removeEventListener('balanceUpdate', handleBalanceUpdate);
-  }, [updateAccountBalance]);
+  //   return () => {
+  //     socket.off('send_Message');
+  //   };
+  // }, []);
+  // console.log(updatedbalance);
   
+
   const { user, accounts, stats } = dashboardData;
   const accountNumber = accounts[0]?.number;
+  
   
 
   const formatCurrency = (amount) => {
@@ -140,6 +148,10 @@ const Dashboard = () => {
   };
 
   const getTotalBalance = () => {
+    if (updatedbalance.length > 0) {
+      // Use the latest balance from updatedbalance
+      return updatedbalance[updatedbalance.length - 1];
+    }
     return stats?.totalBalance || 
            accounts.reduce((sum, account) => sum + account.balance, 0);
   };
