@@ -237,7 +237,15 @@ const AccountSettingsPage = () => {
         {/* Main Content Area */}
         <div className="settings-content">
           {loading ? (
-            <p>Loading settings...</p>
+            <div class="peebank-loader">
+            <div class="peebank-logo">
+              <div class="coin coin-1"></div>
+              <div class="coin coin-2"></div>
+              <div class="coin coin-3"></div>
+              <span class="logo-text">Peebank</span>
+            </div>
+            <p class="loading-text">Loading Settings...</p>
+        </div>
           ) : (
             <form onSubmit={handleSubmit}>
               {activeTab === "profile" && (

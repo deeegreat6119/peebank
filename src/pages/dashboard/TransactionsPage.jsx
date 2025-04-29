@@ -218,9 +218,15 @@ const TransactionPage = () => {
       </div>
 
       {loading ? (
-        <div className="loading-spinner">
-          <i className="fas fa-spinner fa-spin"></i> Loading transactions...
+        <div class="peebank-loader">
+        <div class="peebank-logo">
+          <div class="coin coin-1"></div>
+          <div class="coin coin-2"></div>
+          <div class="coin coin-3"></div>
+          <span class="logo-text">Peebank</span>
         </div>
+        <p class="loading-text">Securing your transactions...</p>
+    </div>
       ) : (
         <>
           <div className="transaction-summary">

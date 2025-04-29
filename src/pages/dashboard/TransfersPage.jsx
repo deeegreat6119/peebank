@@ -528,7 +528,15 @@ const TransferPage = () => {
         <div className="recent-transfers-container">
           <h2>Recent Transfers</h2>
           {loading.initial ? (
-            <div className="loading-spinner">Loading...</div>
+            <div class="peebank-loader">
+            <div class="peebank-logo">
+              <div class="coin coin-1"></div>
+              <div class="coin coin-2"></div>
+              <div class="coin coin-3"></div>
+              <span class="logo-text">Peebank</span>
+            </div>
+            <p class="loading-text">Loading Recent Transfer...</p>
+        </div>
           ) : recentTransfers.length === 0 ? (
             <div className="no-transfers">
               <p>No recent transfers found</p>
