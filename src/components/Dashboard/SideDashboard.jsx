@@ -15,11 +15,9 @@ import { useNavigate } from "react-router";
 import './SideDashboard.css'
 
 const SideDashboard = () => {
-  // const [collapsed, setCollapsed] = useState(false);
   const [activeLink, setActiveLink] = useState("dashboard");
-  // const [isOpen, setIsOpen] = useState(false);
-  const [isMobileOpen, setIsMobileOpen] = useState(false); // Controls mobile sidebar
-  const [isCollapsed, setIsCollapsed] = useState(false); // Controls desktop collapse
+  const [isMobileOpen, setIsMobileOpen] = useState(false);
+  const [isCollapsed, setIsCollapsed] = useState(false);
   // const [activeLink, setActiveLink] = useState("");
   const navigate = useNavigate();
   const location = useLocation();
@@ -88,7 +86,7 @@ const SideDashboard = () => {
       <div className={`sidebar ${isMobileOpen ? "open" : ""} ${isCollapsed ? "collapsed" : ""}`}>
         {/* Sidebar Header */}
         <div className="sidebar-header">
-          {!isCollapsed && <h2>Peebank Admin</h2>}
+          {!isCollapsed && <h2>Peebank</h2>}
           <button
             className="desktop-collapse-btn" // Hidden on mobile
             onClick={() => setIsCollapsed(!isCollapsed)}

@@ -802,6 +802,7 @@ body {
 .auth-header {
   text-align: center;
   margin-bottom: 2rem;
+  /* width: fit-content; */
 }
 
 .auth-logo {
@@ -1063,6 +1064,11 @@ body {
   .form-row {
     flex-direction: column;
     gap: 1.25rem;
+  }
+}
+@media (max-width: 480) {
+  .auth-header{
+    width: fit-content;
   }
 }
 
@@ -2109,6 +2115,7 @@ td {
   border-radius: 6px;
   font-size: 1rem;
   transition: border-color 0.2s ease;
+  padding-left: 40px;
 }
 
 .form-group input:focus,
@@ -2355,7 +2362,7 @@ input:checked + .slider:before {
     padding: 0rem;
   }
   .form-group {
-    width: 50dvw;
+    width: 80dvw;
   }
   .form-group input,
   .form-group select,
@@ -2708,6 +2715,7 @@ input:checked + .slider:before {
   border-radius: 6px;
   font-size: 1rem;
   transition: border-color 0.2s ease;
+  /* padding-left: 40px; */
 }
 
 .form-group select:focus,
@@ -3225,6 +3233,7 @@ input:checked + .slider:before {
   border: 1px solid #ced4da;
   border-radius: 6px;
   font-size: 1rem;
+  padding-left: 40px;
 }
 
 .form-group textarea {
